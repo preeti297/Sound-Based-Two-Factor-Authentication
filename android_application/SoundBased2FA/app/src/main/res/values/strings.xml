@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SoundBased2FA</string>
+    <string name="notification_title">SoundBased2FA</string>
+    <string name="notification_message">Recording sound to perform 2FA</string>
+    <string name="channel_name">SOUND_BASED_2FA_FOREGROUND_NOTI_CHANNEL</string>
+    <string name="channel_description">SOUND_BASED_2FA_FOREGROUND_NOTI_CHANNEL</string>
+</resources>

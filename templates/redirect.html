@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <script
+         src="https://code.jquery.com/jquery-3.4.1.js"
+         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+         crossorigin="anonymous"></script>
+      <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+      <script>
+<!--         document.write("Performing 2FA, please wait...");-->
+         function uploadAudio(mp3Data){
+         console.log(mp3Data);
+         //creating form data to send the audio
+         var fd = new FormData();
+         var mp3Name = encodeURIComponent('audiorecordpc.mp4');
+         fd.append('file',mp3Data,mp3Name);
+         //sending audio to server
+         $.ajax({
+         type: 'POST',
+         url: 'http://192.168.43.202:8080/perform2fa',
+         data: fd,
+         processData: false,
+         contentType: false
+         }).done(function(data) {
+             console.log(data);
+             document.write(data);
+         });
+         }
+         
+         const recordSound = () =>
+         new Promise(async resolve => {
+         
+         //User permission is requested for microphone
+         const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+         const mediaRecorder = new MediaRecorder(audioStream);
+         const audioChunks = []; 
+         
+         mediaRecorder.addEventListener("dataavailable", event => {
+         //Once data is available start pushing the data to audioChunks
+         audioChunks.push(event.data);
+         });
+         //To start media recorder
+         const startAudio = () => mediaRecorder.start();
+         
+         
+         //To stop media recorder
+         const stopAudio = () =>
+         new Promise(resolve => {
+         mediaRecorder.addEventListener("stop", () => {
+         //type: 'audio/mpeg-4' only allows playback in browser but does not encode to mp4
+         
+         const audioBlob = new Blob(audioChunks,{type: 'audio/mp4'});
+         
+         resolve(audioBlob);
+         });
+         
+         mediaRecorder.stop();
+         });
+         
+         resolve({ startAudio, stopAudio });
+         });
+         
+         const sleep = time => new Promise(resolve => setTimeout(resolve, time));
+         
+         var resultPromise=(async () => {
+         const recorder = await recordSound();
+         recorder.startAudio();
+         await sleep(5000);
+         audio = await recorder.stopAudio();
+         uploadAudio(audio);
+         })();
+      </script>
+   </head>
+
+<!-- Modal -->
+    <div class="modal fade" id="pleaseWaitDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+              <h2>Performing 2FA, please wait...</h2>
+          </div>
+          <div class="modal-body">
+            <div class="progress">
+              <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+<!--                <span class="sr-only">40% Complete (success)</span>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</html>

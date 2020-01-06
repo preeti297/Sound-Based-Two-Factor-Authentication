@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "844899747618",
+    "firebase_url": "https://soundbased2fa.firebaseio.com",
+    "project_id": "soundbased2fa",
+    "storage_bucket": "soundbased2fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844899747618:android:c5783cf53514ecada4477b",
+        "android_client_info": {
+          "package_name": "com.mc.soundbased2fa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "844899747618-45rfhmbn33jljijqtrmhr6p82jep23bh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mc.soundbased2fa",
+            "certificate_hash": "689a02c666aabb2a3dc4f87b248076c0af22f4f8"
+          }
+        },
+        {
+          "client_id": "844899747618-01solhrna7iah64p99bbo96e1vd6ssop.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmb1Ll2C4TGwa0nioCJHLcNnGnIdYFcoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "844899747618-01solhrna7iah64p99bbo96e1vd6ssop.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
