@@ -53,12 +53,12 @@ import time
 app = Flask(__name__)
 
 # Change this to your secret key (can be anything, it's for extra protection)
-app.secret_key = 'rahulsanjay'
+app.secret_key = 'secretkey'
 
 # Enter your database connection details below
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'luhar@321'
+app.config['MYSQL_PASSWORD'] = '321'
 app.config['MYSQL_DB'] = 'mcproject'
 
 # Intialize MySQL
@@ -192,9 +192,9 @@ def send_request_to_mobile(value):
         "data": {
             "record": value
          },
-        "registration_ids": ["elx5EkNeoRQ:APA91bGM3vC7LHtBlPxYGURgJbBMfsmwNmHoJmLarL_cpzNM-yWwPTwMKwDFzoCifvz-_qGMFGCBHJv49k2EuHQxhgqHPW489zWprk5ZHEwz9EIsWYX8tK9717aQUeryoQwnOaOyOjSf"]
+        "registration_ids": ["registration_id"]
     }
-    response = requests.post(url, json=dataJson, headers={"Content-Type": "application/json", "Authorization" : "key=AAAAxLfzByI:APA91bH1vr612jfbB39oMOB9UF_REN85lx-d5G7GuJPCJmhpAyLK_WKO9yRYnVYoMxik-4W5-Z-JoAl3RUhLyTs7C8S0LXPHNKGfupP0f9Ac-KvmmWWKa2LBt82-azgR77zXQj2jLmvi"})
+    response = requests.post(url, json=dataJson, headers={"Content-Type": "application/json", "Authorization" : "key=keyvalue"})
     # print("From mobile: ", response.json())
 
 if __name__ == '__main__':
