@@ -6,4 +6,4 @@ The implementation is divided into three major tasks. They are:-
 2. Phone - A background application is used to record the sound.
 3. Sound Similarity - The sound similarity is checked by calculating the correlation between the audio fingerprints.
 
-After the sounds are match, the second authentication is successfully performed.
+After the sounds are matched, the second authentication is successfully performed.
